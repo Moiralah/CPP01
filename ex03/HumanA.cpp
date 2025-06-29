@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 07:42:23 by huidris           #+#    #+#             */
-/*   Updated: 2025/06/28 05:39:45 by huidris          ###   ########.fr       */
+/*   Created: 2025/06/21 05:40:25 by huidris           #+#    #+#             */
+/*   Updated: 2025/06/29 18:50:24 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-Zombie* zombieHorde(int N, std::string name)
+HumanA::HumanA(const std::string& name, Weapon& weapon) : _name(name), _weapon(weapon)
 {
-	Zombie* horde = new Zombie[N];
-	for (int i = 0; i < N; ++i)
-	{
-		std::ostringstream oss;
-		oss << i + 1;
-		horde[i].setName(name + " " + oss.str());
-	}
-	return horde;
+	std::cout << "HumanA '" << _name << "' born with weapon of type '" << _weapon.getType() << "'" << std::endl;
+}
+
+HumanA::~HumanA(){}
+
+void HumanA::attack(void) const
+{
+	std::cout << _name << " attacks with their " << _weapon.getType() << std::endl;
 }
