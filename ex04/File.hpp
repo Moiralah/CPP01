@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   File.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 08:01:46 by huidris           #+#    #+#             */
-/*   Updated: 2025/06/29 19:31:31 by huidris          ###   ########.fr       */
+/*   Updated: 2025/06/30 02:56:11 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#ifndef FILE_HPP
+# define FILE_HPP
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <new>
 
-class Weapon
+class File
 {
 	private:
-		std::string _type;
+		std::string _buffer;
 
 	public:
-		Weapon(std::string type);
-		~Weapon();
+		File();
+		~File();
 
-		const std::string& getType() const;
-		void setType(const std::string& type);
+		std::string readFile(std::string filename);
+		void contentReplace(std::string &content, const std::string s1, const std::string s2);
+
 };
 
 #endif

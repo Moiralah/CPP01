@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   File.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 05:40:25 by huidris           #+#    #+#             */
-/*   Updated: 2025/06/29 19:33:01 by huidris          ###   ########.fr       */
+/*   Updated: 2025/06/30 02:56:18 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "File.hpp"
 
-HumanA::HumanA(const std::string& name, Weapon& weapon) :
-_name(name), _weapon(weapon)
+File::File() : _buffer(){}
+File::~File(){}
+
+std::string File::readFile(std::string filename)
 {
-	std::cout << "HumanA '" << _name << "' born with weapon of type '"
-	<< _weapon.getType() << "'" << std::endl;
+	std::string read;
+	std::ifstream readingFile(filename.c_str());
+	while (getline(readingFile, _buffer))
+		read += _buffer + "\n";
+	return read;
 }
 
-HumanA::~HumanA(){}
-
-void HumanA::attack(void) const
+void File::contentReplace(std::string &content, const std::string s1, const std::string s2)
 {
-	std::cout << _name << " attacks with their "
-	<< _weapon.getType() << std::endl;
+	size_t pos = 0;
+	while ((pos = content.find(s1, pos)) != std::string::npos)
+	{
+		content.erase(pos, s1.length());
+		content.insert(pos, s2);
+		pos += s2.length();
+	}
 }
+

@@ -6,30 +6,36 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 07:04:27 by huidris           #+#    #+#             */
-/*   Updated: 2025/06/29 19:31:55 by huidris          ###   ########.fr       */
+/*   Updated: 2025/06/30 02:56:48 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "File.hpp"
 
-int main()
+int main(int ac, char **argv)
 {
+	File file;
+	if (ac < 4)
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		std::cout << "Argument invalid. Please input valid argument." << std::endl;
+		std::cout << "./<program> <filename> <s1> <s2> " << std::endl;
+		return 0;
 	}
+	std::string filename = argv[1];
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
+	std::string content;
+
+	content += file.readFile(filename);
+	if (content.empty())
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
+		std::cout << "File is empty or does not exist." << std::endl;
+		return 0;
 	}
+
+	file.contentReplace(content, s1, s2);
+	std::ofstream fileReplace((filename + ".replace").c_str());
+	fileReplace << content;
+
 	return 0;
 }
