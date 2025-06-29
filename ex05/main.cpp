@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   File.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 08:01:46 by huidris           #+#    #+#             */
-/*   Updated: 2025/06/30 04:36:30 by huidris          ###   ########.fr       */
+/*   Created: 2025/06/21 07:04:27 by huidris           #+#    #+#             */
+/*   Updated: 2025/06/30 05:49:47 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_HPP
-# define FILE_HPP
-#include <iostream>
-#include <string>
-#include <fstream>
+#include "Harl.hpp"
 
-class File
+int main(int ac, char **argv)
 {
-	private:
-		std::string _buffer;
+	Harl harl;
+	if (ac == 2)
+	{
+		harl.complain(argv[1]);
+	}
+	else
+	{
+		std::cout << "Usage: ./harl_filter <level>" << std::endl;
+	}
 
-	public:
-		File();
-		~File();
-
-		std::string readFile(std::string filename);
-		void contentReplace(std::string &content, const std::string s1, const std::string s2);
-
-};
-
-#endif
+	return 0;
+}

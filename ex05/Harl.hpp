@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   File.hpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 08:01:46 by huidris           #+#    #+#             */
-/*   Updated: 2025/06/30 04:36:30 by huidris          ###   ########.fr       */
+/*   Updated: 2025/06/30 04:43:01 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_HPP
-# define FILE_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 #include <iostream>
 #include <string>
 #include <fstream>
 
-class File
+class Harl
 {
 	private:
-		std::string _buffer;
+		void _debug(void);
+		void _info(void);
+		void _warning(void);
+		void _error(void);
 
 	public:
-		File();
-		~File();
+		Harl();
+		~Harl();
 
-		std::string readFile(std::string filename);
-		void contentReplace(std::string &content, const std::string s1, const std::string s2);
-
+		void complain(std::string level);
 };
 
 #endif
