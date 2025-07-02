@@ -16,13 +16,8 @@ int main(int ac, char **argv)
 {
 	Harl harl;
 	if (ac == 2)
-	{
 		harl.complain(argv[1]);
-	}
 	else
-	{
 		std::cout << "Usage: ./harl_filter <level>" << std::endl;
-	}
-
 	return 0;
 }
