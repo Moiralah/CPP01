@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 07:04:27 by huidris           #+#    #+#             */
-/*   Updated: 2025/07/04 21:23:01 by huidris          ###   ########.fr       */
+/*   Created: 2025/06/21 08:01:46 by huidris           #+#    #+#             */
+/*   Updated: 2025/07/04 21:05:04 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
+#include <iostream>
+#include <string>
+#include <fstream>
 
-int main(int ac, char **argv)
+class Harl
 {
-	Harl harl;
-	if (ac == 2)
-		harl.complain(argv[1]);
-	else
-		std::cout << "Argument invalid" << std::endl;
-	return 0;
-}
+	private:
+		void _debug(void);
+		void _info(void);
+		void _warning(void);
+		void _error(void);
+
+		std::string levels[4];
+
+	public:
+		Harl();
+		~Harl();
+
+		void complain(std::string level);
+};
+
+#endif
